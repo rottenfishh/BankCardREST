@@ -1,8 +1,8 @@
 package com.example.bankcards.controller;
 
-import com.example.bankcards.dto.JwtAuthResponse;
-import com.example.bankcards.dto.SignInDTO;
-import com.example.bankcards.dto.SignUpDTO;
+import com.example.bankcards.dto.auth.JwtAuthResponse;
+import com.example.bankcards.dto.auth.SignInDTO;
+import com.example.bankcards.dto.auth.SignUpDTO;
 import com.example.bankcards.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

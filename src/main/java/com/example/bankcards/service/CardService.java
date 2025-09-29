@@ -1,9 +1,9 @@
 package com.example.bankcards.service;
 
-import com.example.bankcards.dto.CardDTO;
-import com.example.bankcards.dto.CreateCardDTO;
-import com.example.bankcards.dto.EditCardDTO;
-import com.example.bankcards.dto.TransferDTO;
+import com.example.bankcards.dto.cards.CardDTO;
+import com.example.bankcards.dto.cards.CreateCardDTO;
+import com.example.bankcards.dto.cards.EditCardDTO;
+import com.example.bankcards.dto.cards.TransferDTO;
 import com.example.bankcards.entity.Card;
 import com.example.bankcards.entity.User;
 import com.example.bankcards.repository.CardRepository;
@@ -11,6 +11,8 @@ import com.example.bankcards.repository.UserRepository;
 import com.example.bankcards.util.MaskCardNumber;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
@@ -107,6 +109,14 @@ public class CardService {
         cardRepository.save(cardTo);
         System.out.println("Operation successful");
 
+    }
+
+    public Page<CardDTO> getUserCardsPages(Long userId, String searchNumber, Pageable pageable) {
+        if (searchNumber == null) {
+            return cardRepository.findByUserId(userId, pageable).map(this::convertToDTO);
+        }
+        return cardRepository.findByUserIdAndCardNumberContaining(userId, searchNumber, pageable)
+                .map(this::convertToDTO);
     }
 
     public CardDTO convertToDTO(Card card) {

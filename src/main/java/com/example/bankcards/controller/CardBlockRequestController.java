@@ -1,13 +1,14 @@
 package com.example.bankcards.controller;
 
-import com.example.bankcards.dto.CardBlockRequestDTO;
-import com.example.bankcards.entity.CardBlockRequest;
+import com.example.bankcards.dto.cards.BlockRequestFromUser;
+import com.example.bankcards.dto.cards.CardBlockRequestForAdmin;
 import com.example.bankcards.repository.CardBlockRequestRepository;
 import com.example.bankcards.repository.CardRepository;
+import com.example.bankcards.security.CustomUserDetails;
 import com.example.bankcards.service.CardBlockRequestService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,20 +23,20 @@ public class CardBlockRequestController {
 
     @Operation(summary = "Получить все запросы на блокировку карт", tags = {"Админ"})
     @GetMapping("/admin")
-    public List<CardBlockRequestDTO> getCardBlockRequests() {
+    public List<BlockRequestFromUser> getCardBlockRequests() {
         return cardBlockRequestService.getBlockRequests();
     }
 
     @Operation(summary = "Аппрувнуть запрос на блокировку карты", tags = {"Админ"})
     @PutMapping("/admin/{idx}")
-    public void approveBlockRequest(@PathVariable Long idx, @RequestBody CardBlockRequestDTO cardBlockRequestDTO) {
-        cardBlockRequestService.approveCardBlock(cardBlockRequestDTO);
+    public void approveBlockRequest(@PathVariable Long idx, @RequestBody CardBlockRequestForAdmin blockRequest) {
+        cardBlockRequestService.approveCardBlock(blockRequest);
     }
 
     @Operation(summary = "Запросить блокировку карты", tags = {"Пользователь"})
     @PostMapping
-    public void createCardBlockRequest(@RequestBody CardBlockRequestDTO cardBlockRequestDTO) {
-        cardBlockRequestService.requestBlockCard(cardBlockRequestDTO);
+    public void createCardBlockRequest(@AuthenticationPrincipal CustomUserDetails auth, @RequestBody BlockRequestFromUser blockRequestFromUser) {
+        cardBlockRequestService.requestBlockCard(auth.getId(), blockRequestFromUser);
     }
 
 }

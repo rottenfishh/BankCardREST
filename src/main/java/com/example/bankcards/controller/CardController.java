@@ -1,20 +1,18 @@
 package com.example.bankcards.controller;
 
-import com.example.bankcards.dto.CardDTO;
-import com.example.bankcards.dto.CreateCardDTO;
-import com.example.bankcards.dto.EditCardDTO;
-import com.example.bankcards.dto.TransferDTO;
+import com.example.bankcards.dto.cards.CardDTO;
+import com.example.bankcards.dto.cards.CreateCardDTO;
+import com.example.bankcards.dto.cards.EditCardDTO;
+import com.example.bankcards.dto.cards.TransferDTO;
 import com.example.bankcards.entity.Card;
-import com.example.bankcards.repository.CardRepository;
 import com.example.bankcards.security.CustomUserDetails;
 import com.example.bankcards.service.CardService;
-import com.example.bankcards.entity.User;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -64,5 +62,16 @@ public class CardController {
     @PostMapping("/cards/transfer")
     public void transferMoney(@AuthenticationPrincipal CustomUserDetails auth, @RequestBody TransferDTO transferDTO) {
         cardService.transferMoney(auth.getId(), transferDTO);
+    }
+
+    @GetMapping("/cards/pages")
+    public Page<CardDTO> getUserCards(
+            @AuthenticationPrincipal CustomUserDetails auth,
+            @RequestParam(required = false) String search,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Pageable pageable = PageRequest.of(page, size);
+        return cardService.getUserCardsPages(auth.getId(), search, pageable);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.bankcards.dto;
+package com.example.bankcards.dto.cards;
 
 import com.example.bankcards.entity.CardBlockRequest;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -8,8 +8,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Schema(description = "Вид запроса на блокировку карты")
-public class CardBlockRequestDTO {
-    Long userId;
+public class BlockRequestFromUser {
     Long cardId;
     CardBlockRequest.BlockStatus blockStatus;
 }

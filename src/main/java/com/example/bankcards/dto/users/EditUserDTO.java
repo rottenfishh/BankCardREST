@@ -1,4 +1,4 @@
-package com.example.bankcards.dto;
+package com.example.bankcards.dto.users;
 
 import com.example.bankcards.entity.User;
 import io.swagger.v3.oas.annotations.media.Schema;

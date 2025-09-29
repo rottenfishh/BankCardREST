@@ -1,8 +1,8 @@
 package com.example.bankcards.controller;
 
-import com.example.bankcards.dto.CreateUserDTO;
-import com.example.bankcards.dto.EditUserDTO;
-import com.example.bankcards.dto.UserDTO;
+import com.example.bankcards.dto.users.CreateUserDTO;
+import com.example.bankcards.dto.users.EditUserDTO;
+import com.example.bankcards.dto.users.UserDTO;
 import com.example.bankcards.security.CustomUserDetails;
 import com.example.bankcards.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;

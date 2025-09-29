@@ -1,8 +1,8 @@
 package com.example.bankcards.service;
 
-import com.example.bankcards.dto.JwtAuthResponse;
-import com.example.bankcards.dto.SignInDTO;
-import com.example.bankcards.dto.SignUpDTO;
+import com.example.bankcards.dto.auth.JwtAuthResponse;
+import com.example.bankcards.dto.auth.SignInDTO;
+import com.example.bankcards.dto.auth.SignUpDTO;
 import com.example.bankcards.repository.UserRepository;
 import com.example.bankcards.security.CustomUserDetails;
 import com.example.bankcards.entity.User;

@@ -1,7 +1,7 @@
 package com.example.bankcards.service;
 
-import com.example.bankcards.dto.CreateUserDTO;
-import com.example.bankcards.dto.EditUserDTO;
+import com.example.bankcards.dto.users.CreateUserDTO;
+import com.example.bankcards.dto.users.EditUserDTO;
 import com.example.bankcards.entity.User;
 import com.example.bankcards.exception.UserExistsException;
 import com.example.bankcards.repository.CardRepository;

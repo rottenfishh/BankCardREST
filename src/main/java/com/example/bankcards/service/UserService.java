@@ -1,18 +1,16 @@
 package com.example.bankcards.service;
 
-import com.example.bankcards.dto.CreateUserDTO;
-import com.example.bankcards.dto.EditUserDTO;
-import com.example.bankcards.dto.UserDTO;
+import com.example.bankcards.dto.users.CreateUserDTO;
+import com.example.bankcards.dto.users.EditUserDTO;
+import com.example.bankcards.dto.users.UserDTO;
 import com.example.bankcards.entity.User;
 import com.example.bankcards.exception.UserExistsException;
 import com.example.bankcards.repository.CardRepository;
 import com.example.bankcards.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
 
 @AllArgsConstructor
