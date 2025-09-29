@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: you
+      changes:
+        - addUniqueConstraint:
+            columnNames: user_name
+            tableName: users
+            constraintName: uq_users_username

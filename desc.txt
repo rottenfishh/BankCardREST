@@ -1,0 +1,11 @@
+table - cards
+table - users
+todos:
+// только один реквест бади может быть везде
+// maybe return operation status to user
+// просмотр карт с пагинацией и фильтрацией
+// block/unblock requests queue for admin on separate endpoint
+// smth else
+// swagger docker etc
+// юнит тесты
+http://localhost:8080/swagger-ui/index.html
