@@ -30,6 +30,7 @@ public class CardBlockRequestService {
             throw new AccessDeniedException("Card does not belong to user");
         } else {
             CardBlockRequest cardBlockRequest = new CardBlockRequest();
+            cardBlockRequest.setStatus(requestDTO.getBlockStatus());
             cardBlockRequest.setCardId(card.getId());
             cardBlockRequest.setUserId(userId);
             cardBlockRequestRepository.save(cardBlockRequest);
