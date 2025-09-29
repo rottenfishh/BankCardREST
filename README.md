@@ -1,7 +1,7 @@
 Сначала склонируйте репозиторий:
 
-git clone https://github.com/<your-username>/bankcards.git
-cd bankcards
+**git clone https://github.com/<your-username>/bankcards.git**
+**cd bankcards**
 
 Нужно настроить .env файл для работы переменных среды, пример настройки: env.example
 
@@ -9,10 +9,12 @@ cd bankcards
 
 Соберите jar-файл этого прекрасного проекта:
 
-mvn clean package -DskipTests
+**mvn clean package -DskipTests**
 
 После этого, все уже написано за вас, зовем докер-композ!
 
-docker-compose up --build
+**docker-compose up --build**
 
-Имея наш докер контейнер up and running, заходим на http://localhost:8080/swagger-ui/index.html и наслаждаемся
+Имея наш докер контейнер up and running, заходим на 
+  **http://localhost:8080/swagger-ui/index.html**
+и наслаждаемся
